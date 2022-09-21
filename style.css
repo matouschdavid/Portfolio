@@ -1,0 +1,185 @@
+:root {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: white;
+    padding: 0;
+    margin: 0;
+}
+
+footer {
+    height: 5vh;
+    background-color: #FFFFFF;
+    width: 100%;
+}
+
+canvas {
+    position: fixed;
+    left: 60vw;
+    top: 30vh;
+    max-width: 30vw;
+    background-color: white;
+    z-index: -1;
+}
+
+#site {
+    display: flex;
+    width: 100%;
+    margin-top: 125vh;
+}
+
+main {
+    width: 100%;
+}
+
+nav {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30vh;
+    padding: 5%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+nav>svg>g>text {
+    font-family: 'Permanent Marker', cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 73px;
+}
+
+#first-text {
+    fill: #007172;
+}
+
+#second-text {
+    fill: #F29325;
+}
+
+#third-text {
+    fill: #D94F04;
+}
+
+main>section {
+    width: 97vw;
+    height: 88vh;
+    position: relative;
+    margin: 12vh 1vw;
+    border: 5px solid;
+    box-sizing: border-box;
+}
+
+#education {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-color: #007172;
+}
+
+#projects {
+    border-color: #F29325;
+}
+
+#aboutme {
+    border-color: #D94F04;
+    /* height: 83vh; */
+}
+
+#nav {
+    border-color: transparent;
+}
+
+main>section>a {
+    position: absolute;
+    bottom: -12vh;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 39px;
+    color: #1d1d1d;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    height: 5vh;
+    text-align: justify;
+    padding-bottom: auto;
+    padding-top: 16px;
+    padding-left: 16px;
+    box-sizing: border-box;
+}
+
+.nextLink {
+    bottom: -6vh;
+}
+
+#education>h2 {
+    text-align: center;
+}
+
+.education-frame {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-right: auto;
+    width: 100%;
+}
+
+.card {
+    padding: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 25%;
+    margin: 2vw;
+    box-sizing: border-box;
+}
+
+.card>p {
+    margin-bottom: 150px;
+    text-align: center;
+}
+
+.card>img {
+    width: 80%;
+}
+
+#top {
+    position: absolute;
+    top: 0;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1600px) {
+    .education-frame {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 50%;
+    }
+
+    #decoration {
+        margin-right: 0;
+    }
+
+    canvas {
+        max-width: 40vw;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .card {
+        width: 80%;
+    }
+}
