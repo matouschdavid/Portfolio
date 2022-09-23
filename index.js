@@ -1,9 +1,3 @@
-function scrollToElement(element) {
-    document.getElementById(`${element}Anchor`).scrollIntoView({
-        behavior: 'smooth'
-    });
-}
-
 const lines = document.getElementsByClassName('home_line');
 const heroFrameCount = 70;
 const threeDotsPause = 30;
@@ -53,6 +47,8 @@ const preloadImages = () => {
 
 
 preloadImages();
+const header = document.getElementById('header');
+const slideInElements = document.getElementsByClassName('slide-in');
 window.addEventListener('scroll', () => {
     const scrollTop = html.scrollTop;
     // const maxScrollTop = window.innerHeight * 3.5;
@@ -63,4 +59,37 @@ window.addEventListener('scroll', () => {
         Math.floor(scrollFraction * frameCount)
     );
     requestAnimationFrame(() => updateImage(frameIndex))
+
+    if (frameIndex >= 20) {
+        header.classList.add('visible');
+
+    } else {
+        header.classList.remove('visible');
+    }
+
+    for (let index = 0; index < slideInElements.length; index++) {
+        const element = slideInElements.item(index);
+        if (isElementInViewport(element)) {
+            element.classList.add('visible');
+        } else {
+            element.classList.remove('visible');
+        }
+    }
 });
+
+function isElementInViewport(el) {
+
+    // Special bonus for those using jQuery
+    if (typeof jQuery === "function" && el instanceof jQuery) {
+        el = el[0];
+    }
+
+    var rect = el.getBoundingClientRect();
+
+    return (
+        rect.top >= -100 &&
+        rect.left >= 0 &&
+        (rect.bottom + 100) <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
