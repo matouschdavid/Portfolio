@@ -1,141 +1,109 @@
 :root {
-    scroll-behavior: smooth;
+    --brown: #493632;
+    --dark-brown: #382723;
     font-family: 'Inter', sans-serif;
-    font-style: normal;
     font-weight: 500;
-    color: #171717;
+    color: var(--brown);
 }
 
-h2 {
-    font-size: 40px;
-    color: #F6D4D4;
-}
-
-p {
-    font-size: 18px;
-}
-
+html,
 body {
-    background: white;
-    padding: 0;
     margin: 0;
-    height: 500vh;
+    padding: 0;
 }
 
 header {
     position: fixed;
-    top: 0;
-    padding-top: 32px;
-    padding-bottom: 128px;
+    top: 32px;
     width: 100%;
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 61.98%, rgba(255, 255, 255, 0) 100%);
-    z-index: 10;
-    opacity: 0;
-    transition: 0.5s;
 }
 
-.slide-in {
-    transition: 0.5s;
-    opacity: 0;
-    transform: translateY(64px);
-}
-
-.visible {
-    transition: 1s;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-header>ul {
-    width: 100%;
+#hero {
+    position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
-    list-style-type: none;
-}
-
-header>ul>li {
-    margin: 0 32px;
-}
-
-header>ul>li>a {
-
-    font-size: 20px;
-    line-height: 24px;
-    text-decoration: none;
-    color: #000000;
-}
-
-footer {
-    height: 5vh;
-    background-color: #FFFFFF;
+    align-items: flex-end;
     width: 100%;
+    bottom: 30vh;
+
 }
 
-canvas {
+#hero>h1 {
     position: fixed;
-    left: 60vw;
-    top: 30vh;
-    max-width: 30vw;
-    background-color: white;
+    top: 15vh;
+    font-size: 100px;
+    font-weight: 700;
+    color: var(--dark-brown);
     z-index: -1;
 }
 
-#site {
-    display: flex;
+#hero>img {
+    position: absolute;
+    width: 40vh;
+}
+
+#hero>svg {
+    position: absolute;
+    bottom: 1vh;
+    height: 4vh;
     width: 100%;
-    margin-top: 125vh;
+    z-index: -1;
+}
+
+#leave-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+}
+
+.leave {
+    position: absolute;
+    background-image: url("./assets/fallingLeave.png");
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    z-index: 20;
+    opacity: 0;
+    animation: appear 0.5s linear 0s forwards;
+}
+
+@keyframes appear {
+    100% {
+        opacity: 1;
+    }
 }
 
 main {
-    width: 100%;
+    margin-top: 67.6vh;
 }
 
 section {
+    height: 100vh;
     width: 100%;
-    padding: 64px;
-    box-sizing: border-box;
-}
-
-.filler {
-    height: 0vh;
-}
-
-#projects {
-    border-color: #F29325;
 }
 
 #aboutme {
-    border-color: #D94F04;
+    background-color: var(--brown);
 }
 
-#aboutme>article {
-    padding: 2% 0;
-    width: 40%;
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
+
 }
 
-#aboutme>article>h2,
-#aboutme>article>p {
-
-    margin: 24px 0;
+li {
+    margin: 0 32px;
 }
 
-#nav {
-    border-color: transparent;
-}
-
-
-#top {
-    position: absolute;
-    top: 0;
-}
-
-.btn {
-    cursor: pointer;
-}
-
-@media screen and (max-width: 1600px) {
-    canvas {
-        max-width: 40vw;
-    }
+li>a {
+    color: var(--brown);
+    text-decoration: none;
 }

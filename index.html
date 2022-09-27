@@ -11,47 +11,32 @@
     <link rel="stylesheet" type="text/css" href="./style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Permanent+Marker&family=Poppins:wght@300&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div id="leave-frame"></div>
     <a id="top"></a>
-    <header id="header">
+    <header>
         <ul>
             <li><a href="#top">Home</a></li>
             <li><a href="#aboutme">About me</a></li>
             <li><a href="#projects">Projects</a></li>
         </ul>
     </header>
-    <canvas id="hero-lightpass"></canvas>
-    <div id="site">
-        <main>
-            <section id="aboutme">
-                <article class="slide-in">
-                    <h2>In Linz beginnt's</h2>
-                    <p>I'm 22 years old and was born in the wonderful city of Linz. I currently live right next
-                        to
-                        the FH Hagenberg campus where I'm also enrolled.
-                    </p>
-                </article>
-                <article class="slide-in">
-                    <h2>Programming for life</h2>
-                    <p>After 5 years at the HTL Leonding and 2 years(and counting) in Hagenberg I still love programming
-                        every day. I made some cool stuff and would love for you to check out the projects
-                        section of this page and my <a href="https://github.com/matouschdavid" target="_blank"
-                            rel="noopener">GitHub</a>.
-                    </p>
-                </article>
-            </section>
-            <section id="projects">
-            </section>
-
-        </main>
+    <div id="hero">
+        <h1>Hi! I'm David</h1>
+        <img src="./assets/tree_hero_without_text.png" alt="Hero image of pixel tree">
+        <svg viewBox="0 0 1440 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 35L720 0L1440 35H0Z" fill="#493632" />
+        </svg>
 
     </div>
-    <script src="./index.js"></script>
+    <main>
+        <section id="aboutme"></section>
+        <section id="projects"></section>
+    </main>
 </body>
+<script src="index.js"></script>
 
 </html>

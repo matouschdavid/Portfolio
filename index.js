@@ -1,95 +1,71 @@
-const lines = document.getElementsByClassName('home_line');
-const heroFrameCount = 70;
-const threeDotsPause = 30;
-const threeDotsFrameCount = 68;
-// const frameCount = heroFrameCount + threeDotsPause + threeDotsFrameCount;
-const frameCount = heroFrameCount;
-const html = document.documentElement;
-const canvas = document.getElementById("hero-lightpass");
-canvas.width = window.innerWidth;
-canvas.height = Math.round(innerWidth * 0.38);
-const context = canvas.getContext("2d");
-const currentFrame = index => {
-    if (index <= heroFrameCount) {
-        return `./assets/hello_screen/frame_${index.toString().padStart(2, '0')}.jpg`
+onmousemove = (event) => {
+    var eventDoc, doc, body;
+
+    event = event || window.event;
+    if (event.pageX == null && event.clientX != null) {
+        eventDoc = (event.target && event.target.ownerDocument) || document;
+        doc = eventDoc.documentElement;
+        body = eventDoc.body;
+
+        event.pageX = event.clientX +
+            (doc && doc.scrollLeft || body && body.scrollLeft || 0) -
+            (doc && doc.clientLeft || body && body.clientLeft || 0);
+        event.pageY = event.clientY +
+            (doc && doc.scrollTop || body && body.scrollTop || 0) -
+            (doc && doc.clientTop || body && body.clientTop || 0);
     }
-    if (index < (threeDotsPause + heroFrameCount))
-        return undefined;
-
-    return `./assets/three_dots/frame_${(index - (threeDotsPause + heroFrameCount)).toString().padStart(2, '0')}.jpg`
-
-};
-const img = new Image();
-img.src = currentFrame(0);
-
-img.onload = function () {
-    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    mouseX = event.pageX;
+    mouseY = event.pageY;
 }
 
-const updateImage = index => {
-    const res = currentFrame(index);
-    if (!res) {
-        context.fillStyle = "white";
-        context.fillRect(0, 0, canvas.width, canvas.height);
+const frame = document.getElementById("leave-frame");
+const fallingSpeed = 1;
+const lowerBound = window.innerHeight * 0.67;
+var mouseX = 0;
+var lastMouseX = 0;
+var mouseY = 0;
+var lastMouseY = 0;
+var leaves = [];
+
+
+function spawnLeaveAtPos() {
+    if (lastMouseX == mouseX || lastMouseY == mouseY || mouseY >= lowerBound)
         return;
-    }
-    img.src = res;
-    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    const leave = document.createElement("div");
+    leave.classList.add("leave");
+    leave.style.top = `${mouseY}px`;
+    leave.style.left = `${mouseX}px`;
+    frame.appendChild(leave);
+    leaves.push(leave);
+    lastMouseX = mouseX;
+    lastMouseY = mouseY;
 }
 
+function updateLeavePositions() {
+    leaves.forEach((val) => {
+        const oldPos = val.style.top.split('px')[0];
+        const newPos = oldPos - 1 * -1 * fallingSpeed;
 
-const preloadImages = () => {
-    for (let i = 0; i < frameCount; i++) {
-        const img = new Image();
-        img.src = currentFrame(i);
-    }
-};
-
-
-preloadImages();
-const header = document.getElementById('header');
-const slideInElements = document.getElementsByClassName('slide-in');
-window.addEventListener('scroll', () => {
-    const scrollTop = html.scrollTop;
-    // const maxScrollTop = window.innerHeight * 3.5;
-    const maxScrollTop = window.innerHeight * 1.65;
-    const scrollFraction = scrollTop / maxScrollTop;
-    const frameIndex = Math.min(
-        frameCount,
-        Math.floor(scrollFraction * frameCount)
-    );
-    requestAnimationFrame(() => updateImage(frameIndex))
-
-    if (frameIndex >= 20) {
-        header.classList.add('visible');
-
-    } else {
-        header.classList.remove('visible');
-    }
-
-    for (let index = 0; index < slideInElements.length; index++) {
-        const element = slideInElements.item(index);
-        if (isElementInViewport(element)) {
-            element.classList.add('visible');
-        } else {
-            element.classList.remove('visible');
+        if (newPos <= lowerBound) {
+            val.style.top = `${(newPos)}px`;
+            return;
         }
-    }
-});
-
-function isElementInViewport(el) {
-
-    // Special bonus for those using jQuery
-    if (typeof jQuery === "function" && el instanceof jQuery) {
-        el = el[0];
-    }
-
-    var rect = el.getBoundingClientRect();
-
-    return (
-        rect.top >= -100 &&
-        rect.left >= 0 &&
-        (rect.bottom + 100) <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
+        setTimeout(removeLeave, 1000, val);
+    });
 }
+
+function removeLeave(leave) {
+    leaves = removeItemOnce(leaves, leave);
+    leave.remove();
+}
+
+function removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
+}
+
+setInterval(spawnLeaveAtPos, 200);
+setInterval(updateLeavePositions, 10);
