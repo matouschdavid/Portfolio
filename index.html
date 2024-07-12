@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script defer src="hero.js"></script>
 </head>
 
 <body>
@@ -30,13 +32,63 @@
         <svg viewBox="0 0 1440 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 35L720 0L1440 35H0Z" fill="#493632" />
         </svg>
-
     </div>
     <main>
+        <section id="projects">
+            <div class="content">
+                <h2>&lt;last-projects /&gt;</h2>
+                <div class="projects-list">
+                    <div class="project">
+                        <img src="./assets/playingcard_back.png" alt="Game Engine Playing Card Back" />
+                        <div class="project-content">
+                            <img src="./assets/gameengine_card_front.png" alt="Game Engine Playing Card Front" />
+                            <a href="https://github.com/matouschdavid/GameEngine"><img src="./assets/GitHub-Mark.png"
+                                    alt="Link to the Repo"></a>
+                        </div>
+                        <p class="details">After years of using Unity as my gameengine of choice, I
+                            wanted
+                            to try
+                            develop my own engine.</p>
+                    </div>
+                    <div class="project">
+                        <img src="./assets/playingcard_back_special.png" alt="Writr Playing Card Back" />
+                        <div class="project-content">
+                            <img src="./assets/writr_card_front.png" alt="Writr Playing Card Front" />
+                            <a href="https://writr.space" class="smaller"><img src="./assets/writr_mark.png"
+                                    alt="Link to the writr landing page"></a>
+                        </div>
+                        <p class="details">Writr is an app for authors to write stories together. We will
+                            launch
+                            in the
+                            coming months so stay tuned.</p>
+                    </div>
+                    <div class="project">
+                        <img src="./assets/playingcard_back.png" alt="Web Framework Playing Card Back" />
+                        <div class="project-content">
+                            <img src="./assets/framework_card_front.png" alt="Web Framework Playing Card Front" />
+                            <a href="https://github.com/matouschdavid/SpideySenseJs"><img src="./assets/GitHub-Mark.png"
+                                    alt="Link to the Repo"></a>
+                        </div>
+                        <p class="details">My latest project was creating a js framework. It's based on
+                            express and has
+                            a primary focus on being easy to learn. Have a look at the repo and judge for yourself.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="aboutme"></section>
-        <section id="projects"></section>
     </main>
+
+    <style type="text/css" contenteditable="" style="display: block; white-space: pre; transition: 0.2s;">
+        h6 {
+            color: red;
+            font-size: 20px;
+            background-color: yellow;
+        }
+    </style>
+    <h6>You can edit me</h6>
 </body>
-<script src="index.js"></script>
+<script src="leave_animation.js"></script>
+<script src="cards.js"></script>
 
 </html>
